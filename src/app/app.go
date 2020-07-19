@@ -23,10 +23,10 @@ func main() {
 		func(writer http.ResponseWriter, req *http.Request) {
 			data := make(map[string]string)
 			data["Title"] = "Test Page"
-			data["Body"] = "<h1>It works!</h1>"
+			data["Body"] = "It works!"
 
 			var t *template.Template
-			t = template.Must(t.ParseFiles(templatesBasePath + "/base.html"))
+			t = template.Must(t.ParseFiles(templatesBasePath + "/base.tmpl"))
 			t.Execute(writer, data)
 	})
 
