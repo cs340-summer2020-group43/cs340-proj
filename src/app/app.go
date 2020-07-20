@@ -10,7 +10,7 @@ import (
 
 const (
 	templatesBasePath = "./src/templates"
-	port int = 3000
+	port int = 4000
 	urlBasePath = "/cs340"
 )
 
