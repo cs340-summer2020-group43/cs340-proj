@@ -9,9 +9,9 @@ import (
 
 
 const (
+	templatesBasePath = "./src/templates"
 	port int = 3000
 	urlBasePath = "/cs340"
-	templatesBasePath = "../templates"
 )
 
 
