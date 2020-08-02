@@ -34,7 +34,7 @@ func main() {
 				{Url: "cell.html", Desc: "Shows Cells"},
 				{Url: "cell-update.html", Desc: "Updates a Cell"},
 				{Url: "error-add.html", Desc: "Adds an Error"},
-				{Url: "error.html", Desc: "Shows Erros"},
+				{Url: "error.html", Desc: "Shows Errors"},
 				{Url: "error-update.html", Desc: "Updates and Error"},
 				{Url: "product-add.html", Desc: "Adds a Product"},
 				{Url: "product.html", Desc: "Shows Products"},
