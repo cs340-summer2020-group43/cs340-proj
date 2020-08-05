@@ -43,7 +43,7 @@ func main() {
 	}
 
 
-	var fileServer = http.FileServer(http.Dir("src/static/"))
+	var fileServer = http.FileServer(http.Dir("web/static/"))
 
 	pageNames := []string{
 		"cell-add.html",
