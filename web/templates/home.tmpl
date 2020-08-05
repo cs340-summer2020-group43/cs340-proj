@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name = "Author" content="Jennifer Daniels, Nick Barber">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+ </head>
+ <body>
+  <ol>
+    {{range .}}
+     <li><a href="{{.Url}}">{{.Url}}: {{.Desc}}</a></li>
+    {{end}}
+  </ol>
+ </body>
+</html>
