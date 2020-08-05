@@ -2,21 +2,48 @@ package main
 
 
 import (
+    "os"
 	"fmt"
+    "strconv"
 	"html/template"
 	"net/http"
+	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
+	"log"
 )
 
 
 const (
 	templateBasePath = "./src/templates"
 	htmlBasePath = "./src/static/html"
-	port int = 4000
 	urlBasePath = "/cs340"
 )
 
 
+// Usage
+// -----
+// app [PORT] [DB] [USER] [PASS]
+// 
+// Args
+// ----
+// PORT: the port to listen on
+// DB: the name of the database to connect to
+// USER, PASS: login info for the database
 func main() {
+
+    port, err := strconv.Atoi(os.Args[1])
+    dbLocation := os.Args[3] + ":" + os.Args[4] + "@(localhost)/" + os.Args[2]
+
+	db, err := sql.Open("mysql", dbLocation)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if err = db.Ping(); err != nil {
+		log.Fatal(err)
+	}
+
+
+	var fileServer = http.FileServer(http.Dir("src/static/"))
 
 	pageNames := []string{
 		"cell-add.html",
@@ -41,6 +68,10 @@ func main() {
 		"user.html",
 		"user-update.html",
 	}
+
+
+	http.Handle(urlBasePath + "/static/", http.StripPrefix(urlBasePath + "/static/", fileServer))
+
 
 	http.HandleFunc(
 		urlBasePath + "/",
@@ -80,6 +111,7 @@ func main() {
 			t.Execute(writer, data)
 	})
 
+
 	for _, pageName := range pageNames {
 		pagePath := "/" + pageName
 		http.HandleFunc(
@@ -90,7 +122,6 @@ func main() {
 				t.Execute(writer, "")
 		})
 	}
-
 
 
 	fmt.Printf("Server started on port %v\n", port)
