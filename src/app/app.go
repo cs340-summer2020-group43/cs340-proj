@@ -18,6 +18,30 @@ const (
 
 func main() {
 
+	pageNames := []string{
+		"cell-add.html",
+		"cell.html",
+		"cell-update.html",
+		"error-add.html",
+		"error.html",
+		"error-update.html",
+		"product-add.html",
+		"product.html",
+		"product-update.html",
+		"test-add.html",
+		"tester-add.html",
+		"tester.html",
+		"tester-product-add.html",
+		"tester-product.html",
+		"tester-product-update.html",
+		"tester-update.html",
+		"test.html",
+		"test-update.html",
+		"user-add.html",
+		"user.html",
+		"user-update.html",
+	}
+
 	http.HandleFunc(
 		urlBasePath + "/",
 		func(writer http.ResponseWriter, req *http.Request) {
@@ -56,173 +80,16 @@ func main() {
 			t.Execute(writer, data)
 	})
 
-	http.HandleFunc(
-		urlBasePath + "/cell-add.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/cell-add.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/cell.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/cell.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/cell-update.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/cell-update.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/error-add.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/error-add.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/error.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/error.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/error-update.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/error-update.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/product-add.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/product-add.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/product.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/product.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/product-update.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/product-update.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/test-add.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/test-add.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/tester-add.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/tester-add.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/tester.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/tester.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/tester-product-add.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/tester-product-add.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/tester-product.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/tester-product.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/tester-product-update.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/tester-product-update.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/tester-update.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/tester-update.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/test.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/test.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/test-update.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/test-update.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/user-add.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/user-add.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/user.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/user.html"))
-			t.Execute(writer, "")
-	})
-
-	http.HandleFunc(
-		urlBasePath + "/user-update.html",
-		func(writer http.ResponseWriter, req *http.Request) {
-			var t *template.Template
-			t = template.Must(t.ParseFiles(htmlBasePath + "/user-update.html"))
-			t.Execute(writer, "")
-	})
+	for _, pageName := range pageNames {
+		pagePath := "/" + pageName
+		http.HandleFunc(
+			urlBasePath + pagePath,
+			func(writer http.ResponseWriter, req *http.Request) {
+				var t *template.Template
+				t = template.Must(t.ParseFiles(htmlBasePath + pagePath))
+				t.Execute(writer, "")
+		})
+	}
 
 
 
