@@ -121,8 +121,6 @@ func main() {
 				return
 			}
 
-			fmt.Println(tableEntry.ToSQLColumnsString())
-
 			err := tableEntry.InsertIntoTable(&req.Form, db)
 
 			if err != nil {

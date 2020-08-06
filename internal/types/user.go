@@ -37,8 +37,6 @@ func (u User) InsertIntoTable(form *url.Values, db *sql.DB) error {
 
 	builder.WriteString("?);")
 
-	println(builder.String())
-
 	_, err := db.Exec(
 		builder.String(),
 		form.Get("name"),
