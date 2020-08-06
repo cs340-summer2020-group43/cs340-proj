@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name = "Author" content="Jennifer Daniels, Nick Barber">
+  <title>Tester Database Table</title>
+  <link rel="stylesheet" href="static/style/style.css" type="text/css">
+ </head>
+ <body>
+    <H1>Tester Database Table</H1>
+    <table>
+        <thead>
+            <tr>
+                <th>Tester ID</th>
+                <th>Tester Number</th>
+                <th>Cell</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+            <tr>
+                <td>{{.Id}}</td>
+                <td>{{.Desc}}</td>
+                <td>{{.Cell}}</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+ </body>
+</html>
