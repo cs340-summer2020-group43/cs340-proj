@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name = "Author" content="Jennifer Daniels, Nick Barber">
+  <title>Tests Database Table</title>
+  <link rel="stylesheet" href="static/style/style.css" type="text/css">
+ </head>
+ <body>
+    <H1>Tests Database Table</H1>
+    <table>
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Product Number</th>
+                <th>Serial Number</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Error Time</th>
+                <th>Error Type</th>
+                <th>Voltage 1</th>
+                <th>Voltage 2</th>
+                <th>Voltage 3</th>
+                <th>Pressure 1</th>
+                <th>Pressure 2</th>
+                <th>Pressure 3</th>
+                <th>Test Success</th>
+                <th>Tester</th>
+                <th>User</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+            <tr>
+                <td>{{.Id}}</td>
+                <td>{{.Product_id}}</td>
+                <td>{{.Serial_num}}</td>
+                <td>{{.Cell}}</td>
+                <td>{{.Start_time}}</td>
+                <td>{{.End_time}}</td>
+                <td>{{.Error_time}}</td>
+                <td>{{.Error_type}}</td>
+                <td>{{.Result_1}}</td>
+                <td>{{.Result_2}}</td>
+                <td>{{.Result_3}}</td>
+                <td>{{.Result_4}}</td>
+                <td>{{.Result_5}}</td>
+                <td>{{.Result_6}}</td>
+                <td>{{.Pass}}</td>
+                <td>{{.Tester}}</td>
+                <td>{{.User}}</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+ </body>
+</html>
