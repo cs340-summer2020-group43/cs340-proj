@@ -56,6 +56,15 @@ func (t Test) ToSQLColumnsString() string {
 }
 
 
+func (t Test) GetFormValues(form *url.Values) []interface{} {
+	var values []interface{}
+	for _, columnName := range testColumnNames {
+		values = append(values, form.Get(columnName))
+	}
+	return values
+}
+
+
 func (t Test) InsertIntoTable(form *url.Values, db *sql.DB) error {
 	beginningQuery := "insert into " + form.Get("table") + " "
 
@@ -79,13 +88,4 @@ func (t Test) InsertIntoTable(form *url.Values, db *sql.DB) error {
 	)
 
 	return err
-}
-
-
-func (t Test) GetFormValues(form *url.Values) []interface{} {
-	var values []interface{}
-	for _, columnName := range testColumnNames {
-		values = append(values, form.Get(columnName))
-	}
-	return values
 }

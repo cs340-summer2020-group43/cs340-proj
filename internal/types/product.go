@@ -29,6 +29,15 @@ func (p Product) ToSQLColumnsString() string {
 }
 
 
+func (p Product) GetFormValues(form *url.Values) []interface{} {
+	var values []interface{}
+	for _, columnName := range productColumnNames {
+		values = append(values, form.Get(columnName))
+	}
+	return values
+}
+
+
 func (p Product) InsertIntoTable(form *url.Values, db *sql.DB) error {
 	beginningQuery := "insert into " + form.Get("table") + " "
 
@@ -52,13 +61,4 @@ func (p Product) InsertIntoTable(form *url.Values, db *sql.DB) error {
 	)
 
 	return err
-}
-
-
-func (p Product) GetFormValues(form *url.Values) []interface{} {
-	var values []interface{}
-	for _, columnName := range productColumnNames {
-		values = append(values, form.Get(columnName))
-	}
-	return values
 }
