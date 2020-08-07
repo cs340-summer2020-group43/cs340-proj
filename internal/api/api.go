@@ -8,8 +8,8 @@ import (
 )
 
 
-func Insert(entry types.TableEntry,  form *url.Values, db *sql.DB) error {
-	return entry.InsertIntoTable(form, db)
+func Insert(entry types.TableEntry, form *url.Values, db *sql.DB) error {
+	return entry.Insert(form, db)
 }
 
 
