@@ -23,3 +23,8 @@ func Delete(form *url.Values, db *sql.DB) error {
 
 	return err
 }
+
+
+func Update(entry types.TableEntry, form *url.Values, db *sql.DB) error {
+	return entry.Update(form, db)
+}

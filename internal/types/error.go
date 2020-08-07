@@ -59,3 +59,37 @@ func (e Error) Insert(form *url.Values, db *sql.DB) error {
 
 	return err
 }
+
+
+func (e Error) Update(form *url.Values, db *sql.DB) error {
+	beginningQuery := "update " + form.Get("table") + " set "
+
+	var builder strings.Builder
+
+	builder.WriteString(beginningQuery)
+
+	if len(cellColumnNames) > 1 {
+		for i:=0; i<len(cellColumnNames)-1; i++ {
+			builder.WriteString("`")
+			builder.WriteString(cellColumnNames[i])
+			builder.WriteString("`")
+			builder.WriteString(" = (?), ")
+		}
+	}
+
+	builder.WriteString("`")
+	builder.WriteString(errorColumnNames[len(errorColumnNames)-1])
+	builder.WriteString("`")
+	builder.WriteString(" = (?) ")
+	builder.WriteString("where `id` = (?);")
+
+	var values []interface{} = e.GetFormValues(form)
+	values = append(values, form.Get("id"))
+
+	_, err := db.Exec(
+		builder.String(),
+		values...,
+	)
+
+	return err
+}

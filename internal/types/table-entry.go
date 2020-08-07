@@ -12,6 +12,7 @@ import (
 type TableEntry interface {
 	ToSQLColumnsString() string
 	Insert(*url.Values, *sql.DB) error
+	Update(*url.Values, *sql.DB) error
 }
 
 

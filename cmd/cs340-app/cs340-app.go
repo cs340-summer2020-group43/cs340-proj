@@ -129,6 +129,27 @@ func main() {
 
 
 	http.HandleFunc(
+		urlBasePath + "/update",
+		func(writer http.ResponseWriter, req *http.Request) {
+
+			if req.Method != http.MethodPost {
+				return
+			}
+
+			if !internal.IsTableName(req.FormValue("table")) {
+				return
+			}
+
+
+			tableEntry, err := types.TableEntryInit(req.FormValue("table"))
+			if err != nil { log.Println(err) }
+
+			err = api.Update(tableEntry, &req.Form, db)
+			if err != nil { log.Println(err) }
+	})
+
+
+	http.HandleFunc(
 		urlBasePath + "/cell.html",
 		func(writer http.ResponseWriter, req *http.Request) {
 			var cells []types.Cell
