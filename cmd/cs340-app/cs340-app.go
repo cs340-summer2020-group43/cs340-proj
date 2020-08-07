@@ -4,6 +4,7 @@ package main
 import (
 	"cs340"
 	"cs340/internal"
+	"cs340/internal/api"
 	cs340Template "cs340/internal/template"
 	"cs340/internal/types"
     "os"
@@ -105,7 +106,7 @@ func main() {
 			tableEntry, err := types.TableEntryInit(req.FormValue("table"))
 			if err != nil { log.Println(err) }
 
-			err = tableEntry.InsertIntoTable(&req.Form, db)
+			err = api.InsertIntoTable(tableEntry, &req.Form, db)
 			if err != nil { log.Println(err) }
 	})
 
