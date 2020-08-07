@@ -107,30 +107,6 @@ func main() {
 
 			err = tableEntry.InsertIntoTable(&req.Form, db)
 			if err != nil { log.Println(err) }
-			var tableEntry types.TableEntry
-
-			switch req.FormValue("table") {
-			case "Cells":
-				tableEntry = types.Cell{}
-			case "Errors":
-				tableEntry = types.Error{}
-			case "Products":
-				tableEntry = types.Product{}
-			case "Testers":
-				tableEntry = types.Tester{}
-			case "Tests":
-				tableEntry = types.Test{}
-			case "Users":
-				tableEntry = types.User{}
-			default:
-				return
-			}
-
-			err := tableEntry.InsertIntoTable(&req.Form, db)
-
-			if err != nil {
-				log.Println(err)
-			}
 	})
 
 
