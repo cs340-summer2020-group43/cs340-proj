@@ -65,7 +65,7 @@ func (t Test) GetFormValues(form *url.Values) []interface{} {
 }
 
 
-func (t Test) InsertIntoTable(form *url.Values, db *sql.DB) error {
+func (t Test) Insert(form *url.Values, db *sql.DB) error {
 	beginningQuery := "insert into " + form.Get("table") + " "
 
 	var builder strings.Builder

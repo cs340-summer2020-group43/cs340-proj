@@ -11,7 +11,7 @@ import (
 
 type TableEntry interface {
 	ToSQLColumnsString() string
-	InsertIntoTable(*url.Values, *sql.DB) error
+	Insert(*url.Values, *sql.DB) error
 }
 
 

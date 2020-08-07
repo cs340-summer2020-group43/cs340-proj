@@ -35,7 +35,7 @@ func (c Cell) GetFormValues(form *url.Values) []interface{} {
 }
 
 
-func (c Cell) InsertIntoTable(form *url.Values, db *sql.DB) error {
+func (c Cell) Insert(form *url.Values, db *sql.DB) error {
 	beginningQuery := "insert into " + form.Get("table") + " "
 
 	var builder strings.Builder
