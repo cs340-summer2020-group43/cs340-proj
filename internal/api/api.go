@@ -8,12 +8,12 @@ import (
 )
 
 
-func InsertIntoTable(entry types.TableEntry,  form *url.Values, db *sql.DB) error {
+func Insert(entry types.TableEntry,  form *url.Values, db *sql.DB) error {
 	return entry.InsertIntoTable(form, db)
 }
 
 
-func DeleteFromTable(form *url.Values, db *sql.DB) error {
+func Delete(form *url.Values, db *sql.DB) error {
 	partialQuery := "delete from " + form.Get("table") + " where id=(?)"
 
 	_, err := db.Exec(

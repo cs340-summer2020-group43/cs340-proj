@@ -106,7 +106,7 @@ func main() {
 			tableEntry, err := types.TableEntryInit(req.FormValue("table"))
 			if err != nil { log.Println(err) }
 
-			err = api.InsertIntoTable(tableEntry, &req.Form, db)
+			err = api.Insert(tableEntry, &req.Form, db)
 			if err != nil { log.Println(err) }
 	})
 
@@ -123,7 +123,7 @@ func main() {
 				return
 			}
 
-			err = api.DeleteFromTable(&req.Form, db)
+			err = api.Delete(&req.Form, db)
 			if err != nil { log.Println(err) }
 	})
 
