@@ -102,6 +102,11 @@ func main() {
 				return
 			}
 
+			tableEntry, err := types.TableEntryInit(req.FormValue("table"))
+			if err != nil { log.Println(err) }
+
+			err = tableEntry.InsertIntoTable(&req.Form, db)
+			if err != nil { log.Println(err) }
 			var tableEntry types.TableEntry
 
 			switch req.FormValue("table") {
