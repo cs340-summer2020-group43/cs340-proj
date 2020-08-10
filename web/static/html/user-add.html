@@ -5,23 +5,17 @@
   <meta name = "Author" content="Jennifer Daniels, Nick Barber">
   <title>Add User To Database</title>
   <link rel="stylesheet" href="static/style/style.css" type="text/css">
+  <link rel="shortcut icon" href="">
  </head>
  <body>
     <H1>Add User to Database</H1>
-    <form>
-        <ul style="list-style: none;">
-            <li>
-                <label for="f_name">First Name</label>
-                <input type="text" name="f_name" id="">
-            </li>
-            <li>
-                <label for="l_name">Last Name</label>
-                <input type="text" name="l_name" id="">
-            </li>
-            <li>
-                <input type="submit" name="Submit" id="">
-            </li>
-        </ul>   
-    </form>
+    <div class="divUserForm">
+        <form id="userAddForm">
+                    <label for="f_name">First Name</label>
+                    <input type="text" name="f_name" id="UserNameInput">
+                    <button type="submit" name="Submit" id="">Submit</button>  
+        </form>
+    </div>
+    <script src="static/javascript/add.js"></script>
  </body>
 </html>
