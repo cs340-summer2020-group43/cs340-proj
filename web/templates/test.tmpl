@@ -14,6 +14,7 @@
                 <th>Test ID</th>
                 <th>Product Number</th>
                 <th>Serial Number</th>
+                <td>Cell</td>
                 <th>Start Time</th>
                 <th>End Time</th>
                 <th>Error Time</th>
@@ -38,14 +39,62 @@
                 <td>{{.Cell}}</td>
                 <td>{{.Start_time}}</td>
                 <td>{{.End_time}}</td>
-                <td>{{.Error_time}}</td>
-                <td>{{.Error_type}}</td>
-                <td>{{.Result_1}}</td>
+
+                {{if .Error_time.Valid}}
+                <td>{{.Error_time.Time}}</td>
+                {{else}}
+                <td>NULL</td>
+                {{end}}
+
+
+                {{if .Error_type.Valid}}
+                <td>{{.Error_type.Int32}}</td>
+                {{else}}
+                <td>NULL</td>
+                {{end}}
+
+
+                {{if .Result_1.Valid}}
+                <td>{{.Result_1.Float64}}</td>
+                {{else}}
+                <td>NULL</td>
+                {{end}}
+
+
+                {{if .Result_2.Valid}}
                 <td>{{.Result_2}}</td>
+                {{else}}
+                <td>NULL</td>
+                {{end}}
+
+
+                {{if .Result_3.Valid}}
                 <td>{{.Result_3}}</td>
+                {{else}}
+                <td>NULL</td>
+                {{end}}
+
+
+                {{if .Result_4.Valid}}
                 <td>{{.Result_4}}</td>
+                {{else}}
+                <td>NULL</td>
+                {{end}}
+
+
+                {{if .Result_5.Valid}}
                 <td>{{.Result_5}}</td>
+                {{else}}
+                <td>NULL</td>
+                {{end}}
+
+
+                {{if .Result_6.Valid}}
                 <td>{{.Result_6}}</td>
+                {{else}}
+                <td>NULL</td>
+                {{end}}
+
                 <td>{{.Pass}}</td>
                 <td>{{.Tester}}</td>
                 <td>{{.User}}</td>

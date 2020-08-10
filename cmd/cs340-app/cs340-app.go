@@ -35,7 +35,7 @@ const (
 func main() {
 
     port, err := strconv.Atoi(os.Args[1])
-    dbLocation := os.Args[3] + ":" + os.Args[4] + "@(localhost)/" + os.Args[2]
+    dbLocation := os.Args[3] + ":" + os.Args[4] + "@(localhost)/" + os.Args[2] + "?parseTime=true"
 
 	db, err := sql.Open("mysql", dbLocation)
 	if err != nil {

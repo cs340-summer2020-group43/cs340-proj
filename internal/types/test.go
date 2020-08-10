@@ -6,6 +6,7 @@ import (
 	"strings"
 	"net/url"
 	"database/sql"
+	"time"
 )
 
 
@@ -14,16 +15,16 @@ type Test struct {
 	Product_id	string
 	Serial_num	string
 	Cell		int
-	Start_time	string
-	End_time	string
-	Error_time	string
-	Error_type	int
-	Result_1	float64
-	Result_2	float64
-	Result_3	float64
-	Result_4	float64
-	Result_5	float64
-	Result_6	float64
+	Start_time	time.Time
+	End_time	time.Time
+	Error_time	sql.NullTime
+	Error_type	sql.NullInt32
+	Result_1	sql.NullFloat64
+	Result_2	sql.NullFloat64
+	Result_3	sql.NullFloat64
+	Result_4	sql.NullFloat64
+	Result_5	sql.NullFloat64
+	Result_6	sql.NullFloat64
 	Pass		int
 	Tester		int
 	User		int
