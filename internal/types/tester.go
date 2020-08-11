@@ -9,7 +9,7 @@ import (
 
 type Tester struct {
 	Id   int
-	Desc string
+	Desc sql.NullString
 	Cell int
 }
 

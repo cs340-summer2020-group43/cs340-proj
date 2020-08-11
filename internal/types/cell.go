@@ -9,7 +9,7 @@ import (
 
 type Cell struct {
 	Id   int
-	Desc string
+	Desc sql.NullString
 }
 
 var cellColumnNames = []string{

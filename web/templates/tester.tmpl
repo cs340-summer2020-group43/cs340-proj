@@ -20,7 +20,13 @@
             {{range .}}
             <tr>
                 <td>{{.Id}}</td>
-                <td>{{.Desc}}</td>
+
+                {{if .Desc.Valid}}
+                <td>{{.Desc.String}}</td>
+                {{else}}
+                <td>NULL</td>
+                {{end}}
+
                 <td>{{.Cell}}</td>
             </tr>
             {{end}}

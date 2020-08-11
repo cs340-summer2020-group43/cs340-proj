@@ -9,7 +9,7 @@ import (
 
 type Error struct {
 	Id   int
-	Desc string
+	Desc sql.NullString
 }
 
 var errorColumnNames = []string{
