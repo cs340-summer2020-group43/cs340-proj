@@ -1,6 +1,6 @@
 const myForm = document.getElementById('errorAddButton');
 
-myForm.addEventListener('click', (e) => {
+myForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let addForm = document.getElementById('errorAddForm');
     let formData = new FormData(addForm);

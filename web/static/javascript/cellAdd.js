@@ -1,6 +1,6 @@
 const myForm = document.getElementById('cellAddButton');
 
-myForm.addEventListener('click', (e) => {
+myForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let addForm = document.getElementById('cellAddForm');
     let formData = new FormData(addForm);
