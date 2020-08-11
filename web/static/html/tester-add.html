@@ -8,15 +8,17 @@
  </head>
  <body>
     <H1>Add Tester to Database</H1>
-    <div class="testerFormAdd"></div>
+    <div class="addForm">
         <form id="testerAddForm">
             <label for="description">Tester ID Number</label>
-            <input type="text" name="description" id="testerAddDescInput">
-            <label for="Cell">Cell</label>
-            <input type="text" name="Cell" id="testerAddCellInput">
-            <label for="product_id">Product Number</label>
-            <input type="text" name="product_id" id="testerAddProdInput">
-            <button type="submit" name="Submit" id="">Submit</button>
+            <input type="text" name="id" id="testerAddIdInput" maxlength="3" placeholder="1">
+            <label for="description">Tester Name</label>
+            <input type="text" name="description" id="testerAddDescInput" maxlength="255" placeholder="TX/TR TESTER">
+            <label for="cell">Tester Cell Location</label>
+            <input type="text" name="cell" id="testerAddCellInput" maxlength="3" required placeholder="1">
+            <input type="submit" value="Submit" name="Submit" id="testerAddButton">
         </form>
+    </div>
+    <script src="static/javascript/testerAdd.js"></script>
  </body>
 </html>
