@@ -8,28 +8,19 @@
  </head>
  <body>
     <H1>Add Product To Database</H1>
-    <form>
-        <ul style="list-style: none;">
-            <li>
-                <label for="product_id">Product Number</label>
-                <input type="text" name="product_id" id="">
-            </li>
-            <li>
+    <div class="addForm">
+        <form id="productAddForm">
+                <label for="id">Product Number</label>
+                <input type="text" name="id" id="productAddIdInput" required maxlength="20" placeholder="TWSAS0D">
                 <label for="product_class">Product Class</label>
-                <input type="text" name="product_class" id="">
-            </li>
-            <li>
-                <label for="product_type">Product Type</label>
-                <input type="text" name="product_type" id="">
-            </li>
-            <li>
-                <label for="product_cell">Product Cell</label>
-                <input type="text" name="product_cell" id="">
-            </li>
-            <li>
-                <input type="submit" name="Submit" id="">
-            </li>
-        </ul>   
+                <input type="text" name="product_class" id="productAddClassInput" required maxlength="10" placeholder="T2">
+                <label for="type">Product Type</label>
+                <input type="text" name="type" id="productAddTypeInput" maxlength="10" placeholder="1">
+                <label for="cell">Product Cell</label>
+                <input type="text" name="cell" id="productAddCellInput" required maxlength="3" placeholder="1">
+                <input type="submit" value="Submit" name="Submit" id="productAddButton">
     </form>
+    </div>
+    <script src="static/javascript/productAdd.js"></script>
  </body>
 </html>
