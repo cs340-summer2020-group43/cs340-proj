@@ -1,10 +1,8 @@
 package internal
 
-
 import (
 	"strings"
 )
-
 
 var TableNames = []string{
 	"Cells",
@@ -16,7 +14,6 @@ var TableNames = []string{
 	"Tests",
 	"Users",
 }
-
 
 func ToSQLColumnsString(columnNames []string) string {
 	var builder strings.Builder
@@ -35,7 +32,6 @@ func ToSQLColumnsString(columnNames []string) string {
 
 	return s
 }
-
 
 func IsTableName(s string) bool {
 	for _, name := range TableNames {

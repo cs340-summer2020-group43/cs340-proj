@@ -2,7 +2,6 @@ package template
 
 import "cs340/internal/types"
 
-
 var HomeData = []types.HomeDataEntry{
 	{Url: "cell-add.html", Desc: "Adds a Cell"},
 	{Url: "cell.html", Desc: "Shows Cells"},

@@ -1,7 +1,6 @@
 package types
 
-
 type HomeDataEntry struct {
-	Url string
+	Url  string
 	Desc string
 }

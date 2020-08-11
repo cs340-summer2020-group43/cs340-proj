@@ -1,32 +1,29 @@
 package main
 
-
 import (
 	"cs340"
 	"cs340/internal"
 	"cs340/internal/api"
 	cs340Template "cs340/internal/template"
 	"cs340/internal/types"
-    "os"
-	"fmt"
-    "strconv"
-	"html/template"
-	"net/http"
 	"database/sql"
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"html/template"
 	"log"
+	"net/http"
+	"os"
+	"strconv"
 )
-
 
 const (
 	urlBasePath = "/cs340"
 )
 
-
 // Usage
 // -----
 // app [PORT] [DB] [USER] [PASS]
-// 
+//
 // Args
 // ----
 // PORT: the port to listen on
@@ -34,8 +31,8 @@ const (
 // USER, PASS: login info for the database
 func main() {
 
-    port, err := strconv.Atoi(os.Args[1])
-    dbLocation := os.Args[3] + ":" + os.Args[4] + "@(localhost)/" + os.Args[2] + "?parseTime=true"
+	port, err := strconv.Atoi(os.Args[1])
+	dbLocation := os.Args[3] + ":" + os.Args[4] + "@(localhost)/" + os.Args[2] + "?parseTime=true"
 
 	db, err := sql.Open("mysql", dbLocation)
 	if err != nil {
@@ -44,7 +41,6 @@ func main() {
 	if err = db.Ping(); err != nil {
 		log.Fatal(err)
 	}
-
 
 	var fileServer = http.FileServer(http.Dir("web/static/"))
 
@@ -66,33 +62,29 @@ func main() {
 		"user-update.html",
 	}
 
-
-	http.Handle(urlBasePath + "/static/", http.StripPrefix(urlBasePath + "/static/", fileServer))
-
+	http.Handle(urlBasePath+"/static/", http.StripPrefix(urlBasePath+"/static/", fileServer))
 
 	http.HandleFunc(
-		urlBasePath + "/",
+		urlBasePath+"/",
 		func(writer http.ResponseWriter, req *http.Request) {
 			var t *template.Template
 			t = template.Must(t.ParseFiles(cs340.TemplateBasePath + "/home.tmpl"))
 			t.Execute(writer, cs340Template.HomeData)
-	})
-
+		})
 
 	for _, pageName := range defaultPageNames {
 		pagePath := "/" + pageName
 		http.HandleFunc(
-			urlBasePath + pagePath,
+			urlBasePath+pagePath,
 			func(writer http.ResponseWriter, req *http.Request) {
 				var t *template.Template
 				t = template.Must(t.ParseFiles(cs340.HtmlBasePath + pagePath))
 				t.Execute(writer, "")
-		})
+			})
 	}
 
-
 	http.HandleFunc(
-		urlBasePath + "/insert",
+		urlBasePath+"/insert",
 		func(writer http.ResponseWriter, req *http.Request) {
 
 			if req.Method != http.MethodPost {
@@ -104,15 +96,18 @@ func main() {
 			}
 
 			tableEntry, err := types.TableEntryInit(req.FormValue("table"))
-			if err != nil { log.Println(err) }
+			if err != nil {
+				log.Println(err)
+			}
 
 			err = api.Insert(tableEntry, &req.Form, db)
-			if err != nil { log.Println(err) }
-	})
-
+			if err != nil {
+				log.Println(err)
+			}
+		})
 
 	http.HandleFunc(
-		urlBasePath + "/delete",
+		urlBasePath+"/delete",
 		func(writer http.ResponseWriter, req *http.Request) {
 
 			if req.Method != http.MethodPost {
@@ -124,12 +119,13 @@ func main() {
 			}
 
 			err = api.Delete(&req.Form, db)
-			if err != nil { log.Println(err) }
-	})
-
+			if err != nil {
+				log.Println(err)
+			}
+		})
 
 	http.HandleFunc(
-		urlBasePath + "/update",
+		urlBasePath+"/update",
 		func(writer http.ResponseWriter, req *http.Request) {
 
 			if req.Method != http.MethodPost {
@@ -140,17 +136,19 @@ func main() {
 				return
 			}
 
-
 			tableEntry, err := types.TableEntryInit(req.FormValue("table"))
-			if err != nil { log.Println(err) }
+			if err != nil {
+				log.Println(err)
+			}
 
 			err = api.Update(tableEntry, &req.Form, db)
-			if err != nil { log.Println(err) }
-	})
-
+			if err != nil {
+				log.Println(err)
+			}
+		})
 
 	http.HandleFunc(
-		urlBasePath + "/cell.html",
+		urlBasePath+"/cell.html",
 		func(writer http.ResponseWriter, req *http.Request) {
 			var cells []types.Cell
 			var rows *sql.Rows
@@ -180,11 +178,10 @@ func main() {
 			var t *template.Template
 			t = template.Must(t.ParseFiles(cs340.TemplateBasePath + "/cell.tmpl"))
 			t.Execute(writer, cells)
-	})
-
+		})
 
 	http.HandleFunc(
-		urlBasePath + "/product.html",
+		urlBasePath+"/product.html",
 		func(writer http.ResponseWriter, req *http.Request) {
 			var products []types.Product
 			var rows *sql.Rows
@@ -216,11 +213,10 @@ func main() {
 			var t *template.Template
 			t = template.Must(t.ParseFiles(cs340.TemplateBasePath + "/product.tmpl"))
 			t.Execute(writer, products)
-	})
-
+		})
 
 	http.HandleFunc(
-		urlBasePath + "/error.html",
+		urlBasePath+"/error.html",
 		func(writer http.ResponseWriter, req *http.Request) {
 			var errors []types.Error
 			var rows *sql.Rows
@@ -250,11 +246,10 @@ func main() {
 			var t *template.Template
 			t = template.Must(t.ParseFiles(cs340.TemplateBasePath + "/error.tmpl"))
 			t.Execute(writer, errors)
-	})
-
+		})
 
 	http.HandleFunc(
-		urlBasePath + "/test.html",
+		urlBasePath+"/test.html",
 		func(writer http.ResponseWriter, req *http.Request) {
 			var tests []types.Test
 			var rows *sql.Rows
@@ -299,11 +294,10 @@ func main() {
 			var t *template.Template
 			t = template.Must(t.ParseFiles(cs340.TemplateBasePath + "/test.tmpl"))
 			t.Execute(writer, tests)
-	})
-
+		})
 
 	http.HandleFunc(
-		urlBasePath + "/tester.html",
+		urlBasePath+"/tester.html",
 		func(writer http.ResponseWriter, req *http.Request) {
 			var testers []types.Tester
 			var rows *sql.Rows
@@ -334,11 +328,10 @@ func main() {
 			var t *template.Template
 			t = template.Must(t.ParseFiles(cs340.TemplateBasePath + "/tester.tmpl"))
 			t.Execute(writer, testers)
-	})
-
+		})
 
 	http.HandleFunc(
-		urlBasePath + "/user.html",
+		urlBasePath+"/user.html",
 		func(writer http.ResponseWriter, req *http.Request) {
 			var users []types.User
 			var rows *sql.Rows
@@ -368,8 +361,7 @@ func main() {
 			var t *template.Template
 			t = template.Must(t.ParseFiles(cs340.TemplateBasePath + "/user.tmpl"))
 			t.Execute(writer, users)
-	})
-
+		})
 
 	fmt.Printf("Server started on port %v\n", port)
 	http.ListenAndServe(fmt.Sprintf(":%v", port), nil)

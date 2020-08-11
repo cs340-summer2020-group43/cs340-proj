@@ -1,30 +1,25 @@
 package types
 
-
 import (
 	"cs340/internal"
-	"strings"
-	"net/url"
 	"database/sql"
+	"net/url"
+	"strings"
 )
 
-
 type Cell struct {
-	Id		int
-	Desc	string
+	Id   int
+	Desc string
 }
-
 
 var cellColumnNames = []string{
 	"id",
 	"description",
 }
 
-
 func (c Cell) ToSQLColumnsString() string {
 	return internal.ToSQLColumnsString(cellColumnNames)
 }
-
 
 func (c Cell) GetFormValues(form *url.Values) []interface{} {
 	var values []interface{}
@@ -33,7 +28,6 @@ func (c Cell) GetFormValues(form *url.Values) []interface{} {
 	}
 	return values
 }
-
 
 func (c Cell) Insert(form *url.Values, db *sql.DB) error {
 	beginningQuery := "insert into " + form.Get("table") + " "
@@ -45,7 +39,7 @@ func (c Cell) Insert(form *url.Values, db *sql.DB) error {
 	builder.WriteString(" values(")
 
 	if len(cellColumnNames) > 1 {
-		for i:=0; i<len(cellColumnNames)-1; i++ {
+		for i := 0; i < len(cellColumnNames)-1; i++ {
 			builder.WriteString("?, ")
 		}
 	}
@@ -60,7 +54,6 @@ func (c Cell) Insert(form *url.Values, db *sql.DB) error {
 	return err
 }
 
-
 func (c Cell) Update(form *url.Values, db *sql.DB) error {
 	beginningQuery := "update " + form.Get("table") + " set "
 
@@ -69,7 +62,7 @@ func (c Cell) Update(form *url.Values, db *sql.DB) error {
 	builder.WriteString(beginningQuery)
 
 	if len(cellColumnNames) > 1 {
-		for i:=0; i<len(cellColumnNames)-1; i++ {
+		for i := 0; i < len(cellColumnNames)-1; i++ {
 			builder.WriteString("`")
 			builder.WriteString(cellColumnNames[i])
 			builder.WriteString("`")

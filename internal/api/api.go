@@ -1,17 +1,14 @@
 package api
 
-
 import (
 	"cs340/internal/types"
-	"net/url"
 	"database/sql"
+	"net/url"
 )
-
 
 func Insert(entry types.TableEntry, form *url.Values, db *sql.DB) error {
 	return entry.Insert(form, db)
 }
-
 
 func Delete(form *url.Values, db *sql.DB) error {
 	partialQuery := "delete from " + form.Get("table") + " where id=(?)"
@@ -23,7 +20,6 @@ func Delete(form *url.Values, db *sql.DB) error {
 
 	return err
 }
-
 
 func Update(entry types.TableEntry, form *url.Values, db *sql.DB) error {
 	return entry.Update(form, db)

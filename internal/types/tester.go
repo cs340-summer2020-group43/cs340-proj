@@ -1,20 +1,17 @@
 package types
 
-
 import (
 	"cs340/internal"
-	"strings"
-	"net/url"
 	"database/sql"
+	"net/url"
+	"strings"
 )
 
-
 type Tester struct {
-	Id		int
-	Desc	string
-	Cell	int
+	Id   int
+	Desc string
+	Cell int
 }
-
 
 var testerColumnNames = []string{
 	"id",
@@ -22,11 +19,9 @@ var testerColumnNames = []string{
 	"cell",
 }
 
-
 func (t Tester) ToSQLColumnsString() string {
 	return internal.ToSQLColumnsString(testerColumnNames)
 }
-
 
 func (t Tester) GetFormValues(form *url.Values) []interface{} {
 	var values []interface{}
@@ -35,7 +30,6 @@ func (t Tester) GetFormValues(form *url.Values) []interface{} {
 	}
 	return values
 }
-
 
 func (t Tester) Insert(form *url.Values, db *sql.DB) error {
 	beginningQuery := "insert into " + form.Get("table") + " "
@@ -47,7 +41,7 @@ func (t Tester) Insert(form *url.Values, db *sql.DB) error {
 	builder.WriteString(" values(")
 
 	if len(testerColumnNames) > 1 {
-		for i:=0; i<len(testerColumnNames)-1; i++ {
+		for i := 0; i < len(testerColumnNames)-1; i++ {
 			builder.WriteString("?, ")
 		}
 	}
@@ -62,7 +56,6 @@ func (t Tester) Insert(form *url.Values, db *sql.DB) error {
 	return err
 }
 
-
 func (t Tester) Update(form *url.Values, db *sql.DB) error {
 	beginningQuery := "update " + form.Get("table") + " set "
 
@@ -71,7 +64,7 @@ func (t Tester) Update(form *url.Values, db *sql.DB) error {
 	builder.WriteString(beginningQuery)
 
 	if len(cellColumnNames) > 1 {
-		for i:=0; i<len(cellColumnNames)-1; i++ {
+		for i := 0; i < len(cellColumnNames)-1; i++ {
 			builder.WriteString("`")
 			builder.WriteString(cellColumnNames[i])
 			builder.WriteString("`")

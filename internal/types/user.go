@@ -1,30 +1,25 @@
 package types
 
-
 import (
 	"cs340/internal"
-	"strings"
-	"net/url"
 	"database/sql"
+	"net/url"
+	"strings"
 )
 
-
 type User struct {
-	Id		int
-	Name	string
+	Id   int
+	Name string
 }
-
 
 var userColumnNames = []string{
 	"id",
 	"name",
 }
 
-
 func (u User) ToSQLColumnsString() string {
 	return internal.ToSQLColumnsString(userColumnNames)
 }
-
 
 func (u User) GetFormValues(form *url.Values) []interface{} {
 	var values []interface{}
@@ -33,7 +28,6 @@ func (u User) GetFormValues(form *url.Values) []interface{} {
 	}
 	return values
 }
-
 
 func (u User) Insert(form *url.Values, db *sql.DB) error {
 	beginningQuery := "insert into " + form.Get("table") + " "
@@ -54,7 +48,6 @@ func (u User) Insert(form *url.Values, db *sql.DB) error {
 	return err
 }
 
-
 func (u User) Update(form *url.Values, db *sql.DB) error {
 	beginningQuery := "update " + form.Get("table") + " set "
 
@@ -63,7 +56,7 @@ func (u User) Update(form *url.Values, db *sql.DB) error {
 	builder.WriteString(beginningQuery)
 
 	if len(cellColumnNames) > 1 {
-		for i:=0; i<len(cellColumnNames)-1; i++ {
+		for i := 0; i < len(cellColumnNames)-1; i++ {
 			builder.WriteString("`")
 			builder.WriteString(cellColumnNames[i])
 			builder.WriteString("`")

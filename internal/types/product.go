@@ -1,33 +1,29 @@
 package types
 
-
 import (
 	"cs340/internal"
-	"strings"
-	"net/url"
 	"database/sql"
+	"net/url"
+	"strings"
 )
 
-
 type Product struct {
-	Id				string
-	Product_class	string
-	Kind			string
-	Cell			int
+	Id            string
+	Product_class string
+	Kind          string
+	Cell          int
 }
 
-var productColumnNames =[]string{
+var productColumnNames = []string{
 	"id",
 	"product_class",
 	"type",
 	"cell",
 }
 
-
 func (p Product) ToSQLColumnsString() string {
 	return internal.ToSQLColumnsString(productColumnNames)
 }
-
 
 func (p Product) GetFormValues(form *url.Values) []interface{} {
 	var values []interface{}
@@ -36,7 +32,6 @@ func (p Product) GetFormValues(form *url.Values) []interface{} {
 	}
 	return values
 }
-
 
 func (p Product) Insert(form *url.Values, db *sql.DB) error {
 	beginningQuery := "insert into " + form.Get("table") + " "
@@ -48,7 +43,7 @@ func (p Product) Insert(form *url.Values, db *sql.DB) error {
 	builder.WriteString(" values(")
 
 	if len(productColumnNames) > 1 {
-		for i:=0; i<len(productColumnNames)-1; i++ {
+		for i := 0; i < len(productColumnNames)-1; i++ {
 			builder.WriteString("?, ")
 		}
 	}
@@ -63,7 +58,6 @@ func (p Product) Insert(form *url.Values, db *sql.DB) error {
 	return err
 }
 
-
 func (p Product) Update(form *url.Values, db *sql.DB) error {
 	beginningQuery := "update " + form.Get("table") + " set "
 
@@ -72,7 +66,7 @@ func (p Product) Update(form *url.Values, db *sql.DB) error {
 	builder.WriteString(beginningQuery)
 
 	if len(cellColumnNames) > 1 {
-		for i:=0; i<len(cellColumnNames)-1; i++ {
+		for i := 0; i < len(cellColumnNames)-1; i++ {
 			builder.WriteString("`")
 			builder.WriteString(cellColumnNames[i])
 			builder.WriteString("`")

@@ -1,20 +1,17 @@
 package types
 
-
 import (
-	"fmt"
-	"errors"
-	"net/url"
 	"database/sql"
+	"errors"
+	"fmt"
+	"net/url"
 )
-
 
 type TableEntry interface {
 	ToSQLColumnsString() string
 	Insert(*url.Values, *sql.DB) error
 	Update(*url.Values, *sql.DB) error
 }
-
 
 func TableEntryInit(tableName string) (TableEntry, error) {
 	var tableEntry TableEntry
