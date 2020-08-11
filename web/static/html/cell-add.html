@@ -8,16 +8,15 @@
  </head>
  <body>
     <H1>Add Cell To Database</H1>
-    <form>
-        <ul style="list-style: none;">
-            <li>
+    <div class="addForm">
+        <form id="cellAddForm">
+                <label for="id">Id Number</label>
+                <input type="text" name="id" id="cellAddIdInput" required maxlength="3" placeholder="1">
                 <label for="description">Cell Name</label>
-                <input type="text" name="description" id="">
-            </li>
-            <li>
-                <input type="submit" name="Submit" id="">
-            </li>
-        </ul>   
-    </form>
+                <input type="text" name="description" id="cellAddDescInput" required maxlength="20" placeholder="H800">
+                <input type="button" value="Submit" name="Submit" id="cellAddButton">
+        </form>
+    </div>
+    <script src="static/javascript/cellAdd.js"></script>
  </body>
 </html>
