@@ -8,16 +8,15 @@
  </head>
  <body>
     <H1>Add Test Error To Database</H1>
-    <form>
-        <ul style="list-style: none;">
-            <li>
-                <label for="description">Error Name</label>
-                <input type="text" name="description" id="">
-            </li>
-            <li>
-                <input type="submit" name="Submit" id="">
-            </li>
-        </ul>   
-    </form>
+    <div class="addForm">
+        <form id="errorAddForm">
+            <label for="id">Id Number</label>
+            <input type="text" name="id" id="errorAddIdInput" maxlength="3" placeholder="1" required>
+            <label for="description">Error Name</label>
+            <input type="text" name="description" id="errorAddDescInput" maxlength="255" placeholder="Failed Post Test">
+            <input type="submit" name="Submit" id="errorAddButton">
+        </form>
+    </div>
+    <script src="static/javascript/errorAdd.js"></script>
  </body>
 </html>
