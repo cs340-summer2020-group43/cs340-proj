@@ -38,11 +38,15 @@ func ToSQLColumnsString(columnNames []string) string {
 	return s
 }
 
-func IsTableName(s string) bool {
-	for _, name := range TableNames {
+func StringInStrings(s string, strings []string) bool {
+	for _, name := range strings {
 		if s == name {
 			return true
 		}
 	}
 	return false
+}
+
+func IsTableName(s string) bool {
+	return StringInStrings(s, TableNames)
 }
