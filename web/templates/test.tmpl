@@ -8,6 +8,8 @@
  </head>
  <body>
     <H1>Tests Database Table</H1>
+    <button class="filterByFail">Filter by Failures</button>
+    <span class="filterHelperText">Showing all Tests</span>
     <table>
         <thead>
             <tr>
@@ -96,9 +98,9 @@
                 {{end}}
 
                 {{if .Pass}}
-                <td>PASS</td>
+                <td class="pass">PASS</td>
                 {{else}}
-                <td>FAIL</td>
+                <td class="pass">FAIL</td>
                 {{end}}
 
                 <td>{{.Tester}}</td>
@@ -107,5 +109,6 @@
             {{end}}
         </tbody>
     </table>
+    <script type="application/javascript" src="/cs340/static/javascript/filterTestSuccess.js"></script>
  </body>
 </html>
