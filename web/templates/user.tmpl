@@ -8,9 +8,10 @@
  </head>
  <body>
     <H1>User Database Table</H1>
-    <table>
+    <table data-db-table="Users">
         <thead>
             <tr>
+                <th></th>
                 <th>User ID</th>
                 <th>User Name</th>
             </tr>
@@ -18,11 +19,13 @@
         <tbody>
             {{range .}}
             <tr>
-                <td>{{.Id}}</td>
-                <td>{{.Name}}</td>
+                <td><button class="delete-row">delete</button></td>
+                <td class="id">{{.Id}}</td>
+                <td class="name">{{.Name}}</td>
             </tr>
             {{end}}
         </tbody>
     </table>
+    <script type="application/javascript" src="/cs340/static/javascript/delete.js"></script>
  </body>
 </html>
