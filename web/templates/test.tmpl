@@ -95,7 +95,12 @@
                 <td>NULL</td>
                 {{end}}
 
-                <td>{{.Pass}}</td>
+                {{if .Pass}}
+                <td>PASS</td>
+                {{else}}
+                <td>FAIL</td>
+                {{end}}
+
                 <td>{{.Tester}}</td>
                 <td>{{.User}}</td>
             </tr>

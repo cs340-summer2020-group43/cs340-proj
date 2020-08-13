@@ -23,7 +23,7 @@ type Test struct {
 	Result_4   sql.NullFloat64
 	Result_5   sql.NullFloat64
 	Result_6   sql.NullFloat64
-	Pass       int
+	Pass       bool
 	Tester     int
 	User       int
 }
