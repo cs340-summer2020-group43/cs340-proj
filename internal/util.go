@@ -15,6 +15,11 @@ var TableNames = []string{
 	"Users",
 }
 
+var ManyToManyTableMap = map[string][]string{
+	"Testers_Products": {"Testers", "Products"},
+	"Testers_Users":    {"Testers", "Users"},
+}
+
 func ToSQLColumnsString(columnNames []string) string {
 	var builder strings.Builder
 
