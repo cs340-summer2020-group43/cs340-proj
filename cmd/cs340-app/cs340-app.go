@@ -54,7 +54,7 @@ func main() {
 		"test-add.html",
 		"tester-add.html",
 		"tester-product-add.html",
-		"tester-product.html",
+		//"tester-product.html",
 		"tester-product-update.html",
 		"tester-update.html",
 		"test-update.html",
@@ -361,6 +361,39 @@ func main() {
 			var t *template.Template
 			t = template.Must(t.ParseFiles(cs340.TemplateBasePath + "/user.tmpl"))
 			t.Execute(writer, users)
+		})
+
+	http.HandleFunc(
+		urlBasePath+"/tester-product.html",
+		func(writer http.ResponseWriter, req *http.Request) {
+			var tps []types.TesterProduct
+			var rows *sql.Rows
+
+			rows, err = db.Query("select * from Testers_Products;")
+			if err != nil {
+				log.Println(err)
+				rows.Close()
+				return
+			}
+			defer rows.Close()
+
+			for rows.Next() {
+				tp := types.TesterProduct{}
+
+				err = rows.Scan(
+					&tp.Tester,
+					&tp.Product,
+				)
+
+				if err != nil {
+					log.Println(err)
+				}
+
+				tps = append(tps, tp)
+			}
+			var t *template.Template
+			t = template.Must(t.ParseFiles(cs340.TemplateBasePath + "/tester-product.tmpl"))
+			t.Execute(writer, tps)
 		})
 
 	fmt.Printf("Server started on port %v\n", port)

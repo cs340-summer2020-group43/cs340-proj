@@ -5,6 +5,7 @@ import (
 	"cs340/internal/types"
 	"database/sql"
 	"net/url"
+	"strconv"
 	"strings"
 	"unicode"
 )
@@ -14,6 +15,19 @@ func Insert(entry types.TableEntry, form *url.Values, db *sql.DB) error {
 }
 
 func Delete(form *url.Values, db *sql.DB) error {
+
+	if form.Get("table") == "Testers_Products" {
+		tester, err := strconv.Atoi(form.Get("tester"))
+		if err != nil {
+			return err
+		}
+		tp := types.TesterProduct{
+			Tester: tester,
+			Product: form.Get("product"),
+		}
+		err = tp.Delete(form, db)
+		return err
+	}
 
 	if it := getIntersectionTable(form.Get("table")); it != "" {
 		deleteManyToManyParticipation(it, form, db)

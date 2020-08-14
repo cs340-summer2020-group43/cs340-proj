@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name = "Author" content="Jennifer Daniels, Nick Barber">
+  <title>Tester Product Relationship</title>
+  <link rel="stylesheet" href="static/style/style.css" type="text/css">
+ </head>
+ <body>
+    <H1>Tester Product Relationship</H1>
+    <table data-db-table="Testers_Products">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Tester ID</th>
+                <th>Product ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+            <tr>
+                <td class="buttons"><button class="delete-row">delete</button></td>
+                <td class="Tester">{{.Tester}}</td>
+                <td class="Product">{{.Product}}</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+    <script type="application/javascript" src="/cs340/static/javascript/deleteTesterProduct.js"></script>
+ </body>
+</html>
