@@ -55,10 +55,10 @@ func (u User) Update(form *url.Values, db *sql.DB) error {
 
 	builder.WriteString(beginningQuery)
 
-	if len(cellColumnNames) > 1 {
-		for i := 0; i < len(cellColumnNames)-1; i++ {
+	if len(userColumnNames) > 1 {
+		for i := 0; i < len(userColumnNames)-1; i++ {
 			builder.WriteString("`")
-			builder.WriteString(cellColumnNames[i])
+			builder.WriteString(userColumnNames[i])
 			builder.WriteString("`")
 			builder.WriteString(" = (?), ")
 		}

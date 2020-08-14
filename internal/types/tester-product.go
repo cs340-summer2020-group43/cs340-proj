@@ -18,18 +18,21 @@ var testerProductColumnNames = []string{
 }
 
 func (tp TesterProduct) ToSQLColumnsString() string {
-	return internal.ToSQLColumnsString(testerColumnNames)
+	return internal.ToSQLColumnsString(testerProductColumnNames)
 }
 
 func (tp TesterProduct) GetFormValues(form *url.Values) []interface{} {
 	var values []interface{}
-	for _, columnName := range testerColumnNames {
+	for _, columnName := range testerProductColumnNames {
 		values = append(values, form.Get(columnName))
 	}
 	return values
 }
 
 func (tp TesterProduct) Insert(form *url.Values, db *sql.DB) error {
+
+	//partialQuery := "insert into "+form.Get("table")+" v"
+
 	beginningQuery := "insert into " + form.Get("table") + " "
 
 	var builder strings.Builder
@@ -38,8 +41,8 @@ func (tp TesterProduct) Insert(form *url.Values, db *sql.DB) error {
 	builder.WriteString(tp.ToSQLColumnsString())
 	builder.WriteString(" values(")
 
-	if len(testerColumnNames) > 1 {
-		for i := 0; i < len(testerColumnNames)-1; i++ {
+	if len(testerProductColumnNames) > 1 {
+		for i := 0; i < len(testerProductColumnNames)-1; i++ {
 			builder.WriteString("?, ")
 		}
 	}
@@ -61,17 +64,17 @@ func (tp TesterProduct) Update(form *url.Values, db *sql.DB) error {
 
 	builder.WriteString(beginningQuery)
 
-	if len(cellColumnNames) > 1 {
-		for i := 0; i < len(cellColumnNames)-1; i++ {
+	if len(testerProductColumnNames) > 1 {
+		for i := 0; i < len(testerProductColumnNames)-1; i++ {
 			builder.WriteString("`")
-			builder.WriteString(cellColumnNames[i])
+			builder.WriteString(testerProductColumnNames[i])
 			builder.WriteString("`")
 			builder.WriteString(" = (?), ")
 		}
 	}
 
 	builder.WriteString("`")
-	builder.WriteString(testerColumnNames[len(testerColumnNames)-1])
+	builder.WriteString(testerProductColumnNames[len(testerProductColumnNames)-1])
 	builder.WriteString("`")
 	builder.WriteString(" = (?) ")
 	builder.WriteString("where `id` = (?);")
