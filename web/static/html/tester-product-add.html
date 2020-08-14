@@ -8,20 +8,21 @@
  </head>
  <body>
     <H1>Add Tester Product to Database</H1>
-    <form>
+    <form data-db-table="Testers_Products">
         <ul style="list-style: none;">
             <li>
-                <label for="tester_id">Tester ID</label>
-                <input type="text" name="tester_id" id="">
+                <label for="tester">Tester ID</label>
+                <input type="text" name="tester">
             </li>
             <li>
                 <label for="product_id">Product ID</label>
-                <input type="text" name="product_id" id="">
+                <input type="text" name="product">
             </li>
             <li>
-                <input type="submit" name="Submit" id="">
+                <input type="submit" name="submit">
             </li>
         </ul>   
     </form>
+    <script src="static/javascript/add.js"></script>
  </body>
 </html>
