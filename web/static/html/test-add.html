@@ -8,68 +8,77 @@
  </head>
  <body>
     <H1>Add Tests To Database</H1>
-    <form>
+    <form data-db-table="Tests">
         <ul style="list-style: none;">
             <li>
                 <label for="product_id">Product Number</label>
-                <input type="text" name="product_id" id="">
+                <input type="text" name="product_id">
             </li>
             <li>
                 <label for="serial_num">Serial Number</label>
-                <input type="text" name="serial_num" id="">
+                <input type="text" name="serial_num">
+            </li>
+            <li>
+                <label for="serial_num">Cell</label>
+                <input type="text" name="cell">
             </li>
             <li>
                 <label for="start_time">Test Start Time</label>
-                <input type="text" name="start_time" id="">
+                <input type="text" name="start_time">
             </li>
             <li>
                 <label for="end_time">Start End Time</label>
-                <input type="text" name="end_time" id="">
+                <input type="text" name="end_time">
             </li>
             <li>
                 <label for="error_time">Test Error Time</label>
-                <input type="text" name="error_time" id="">
+                <input type="text" name="error_time">
+            </li>
+            <li>
+                <label for="error_type">Test Error Type</label>
+                <input type="text" name="error_type">
             </li>
             <li>
                 <label for="result_1">Test Voltage Result 1</label>
-                <input type="text" name="result_1" id="">
+                <input type="text" name="result_1">
             </li>
             <li>
                 <label for="result_2">Test Voltage Result 2</label>
-                <input type="text" name="" id="">
+                <input type="text" name="result_2">
             </li>
             <li>
                 <label for="result_3">Tests Voltage Result 3</label>
-                <input type="text" name="result_3" id="">
+                <input type="text" name="result_3">
             </li>
             <li>
                 <label for="result_4">Test Pressure Result 1</label>
-                <input type="text" name="result_4" id="">
+                <input type="text" name="result_4">
             </li>
             <li>
                 <label for="result_5">Test Pressure Result 2</label>
-                <input type="text" name="result_5" id="">
+                <input type="text" name="result_5">
             </li>
             <li>
-                <label for="result_6">Test Pressure Result 6</label>
-                <input type="text" name="result_6" id="">
+                <label for="result_6">Test Pressure Result 3</label>
+                <input type="text" name="result_6">
             </li>
             <li>
                 <label for="pass">Test Success (Pass/Fail)</label>
-                <input type="text" name="pass" id="">
+                <input type="text" name="pass">
             </li>
             <li>
                 <label for="tester">Tester ID Number</label>
-                <input type="text" name="tester" id="">
+                <input type="text" name="tester">
             </li>
             <li>
                 <label for="user">Operator</label>
-                <input type="text" name="user" id="">
+                <input type="text" name="user">
             </li> 
             <li>
-                <input type="submit" name="Submit" id="">
+                <input type="submit" name="Submit">
             </li>
         </ul>   
     </form>
+    <script src="static/javascript/add.js"></script>
  </body>
 </html>

@@ -9,7 +9,7 @@
  <body>
     <H1>Add Cell To Database</H1>
     <div class="addForm">
-        <form id="cellAddForm">
+        <form id="cellAddForm" data-db-table="Cells">
                 <label for="id">Id Number</label>
                 <input type="text" name="id" id="cellAddIdInput" required maxlength="3" placeholder="1">
                 <label for="description">Cell Name</label>
@@ -17,6 +17,6 @@
                 <input type="submit" value="Submit" name="Submit" id="cellAddButton">
         </form>
     </div>
-    <script src="static/javascript/cellAdd.js"></script>
+    <script src="static/javascript/add.js"></script>
  </body>
 </html>

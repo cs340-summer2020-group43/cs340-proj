@@ -9,7 +9,7 @@
  <body>
     <H1>Add Product To Database</H1>
     <div class="addForm">
-        <form id="productAddForm">
+        <form id="productAddForm" data-db-table="Products">
                 <label for="id">Product Number</label>
                 <input type="text" name="id" id="productAddIdInput" required maxlength="20" placeholder="TWSAS0D">
                 <label for="product_class">Product Class</label>
@@ -21,6 +21,6 @@
                 <input type="submit" value="Submit" name="Submit" id="productAddButton">
     </form>
     </div>
-    <script src="static/javascript/productAdd.js"></script>
+    <script src="static/javascript/add.js"></script>
  </body>
 </html>

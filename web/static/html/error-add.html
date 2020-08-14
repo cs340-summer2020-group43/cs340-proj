@@ -9,7 +9,7 @@
  <body>
     <H1>Add Test Error To Database</H1>
     <div class="addForm">
-        <form id="errorAddForm">
+        <form id="errorAddForm" data-db-table="Errors">
             <label for="id">Id Number</label>
             <input type="text" name="id" id="errorAddIdInput" maxlength="3" placeholder="1" required>
             <label for="description">Error Name</label>
@@ -17,6 +17,6 @@
             <input type="submit" name="Submit" id="errorAddButton">
         </form>
     </div>
-    <script src="static/javascript/errorAdd.js"></script>
+    <script src="static/javascript/add.js"></script>
  </body>
 </html>

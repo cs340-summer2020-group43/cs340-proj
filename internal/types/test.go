@@ -54,28 +54,49 @@ func (t Test) ToSQLColumnsString() string {
 
 func (t Test) GetFormValues(form *url.Values) []interface{} {
 	var values []interface{}
-	for _, columnName := range testColumnNames {
-		values = append(values, form.Get(columnName))
+	var i int
+	if (form.Get("id") == "") {
+		i = 1
+	} else {
+		i = 0
+	}
+	for ; i < len(testColumnNames); i++ {
+		if (form.Get(testColumnNames[i]) == "") {
+			values = append(values, nil)
+		} else {
+			values = append(values, form.Get(testColumnNames[i]))
+		}
 	}
 	return values
 }
 
 func (t Test) Insert(form *url.Values, db *sql.DB) error {
+
+	num_columns := len(testColumnNames)
+
+
 	beginningQuery := "insert into " + form.Get("table") + " "
 
 	var builder strings.Builder
 
 	builder.WriteString(beginningQuery)
-	builder.WriteString(t.ToSQLColumnsString())
+
+	builder.WriteString("(")
+
+	for i := 1; i < num_columns-1; i++ {
+		builder.WriteString("`"+testColumnNames[i]+"`, ")
+	}
+	builder.WriteString("`"+testColumnNames[num_columns-1]+"`)")
+
 	builder.WriteString(" values(")
 
-	if len(testColumnNames) > 1 {
-		for i := 0; i < len(testColumnNames)-1; i++ {
+	if num_columns > 1 {
+		for i := 0; i < num_columns-2; i++ {
 			builder.WriteString("?, ")
 		}
 	}
-
 	builder.WriteString("?);")
+
 
 	_, err := db.Exec(
 		builder.String(),
