@@ -46,18 +46,11 @@ func main() {
 
 	defaultPageNames := []string{
 		"cell-add.html",
-		"cell-update.html",
 		"error-add.html",
-		"error-update.html",
 		"product-add.html",
-		"product-update.html",
 		"test-add.html",
 		"tester-add.html",
 		"tester-product-add.html",
-		//"tester-product.html",
-		"tester-product-update.html",
-		"tester-update.html",
-		"test-update.html",
 		"user-add.html",
 		"user-update.html",
 	}
